@@ -1,14 +1,16 @@
 <?php
 
-use secheater\Http\Route;
-use secheater\Http\Request;
-use secheater\Http\Response;
+use Dotenv\Dotenv;
 
 
-require_once __DIR__ . '/../vendor/autoload.php';
-require_once __DIR__ . '/../routes/web.php';
+require_once __DIR__ . '/../src/support/helpers.php';
+require_once base_path() . 'vendor/autoload.php';
+require_once base_path() . 'routes/web.php';
 
 
-$route = new Route(new Request,new Response);
+$env =  Dotenv::createImmutable(base_path());
 
-var_dump($route);
+$env->load();
+
+app()->run();
+

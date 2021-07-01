@@ -12,7 +12,7 @@ class Request{
 
     public function Path(){
 
-        $path = $_SERVER['REQUEST_URL'];
+        $path = $_SERVER['REQUEST_URI'];
 
         if(strpos($path,'?') > -1){
 
@@ -24,6 +24,7 @@ class Request{
         }
 
     }
+    
 
 
 }

@@ -2,8 +2,6 @@
 
 use secheater\Http\Route;
 
-Route::get('/', function(){
+use App\Controller\HomeController;
 
-    return "holw";
-
-});
+Route::get('/', [HomeController::class, 'index']);

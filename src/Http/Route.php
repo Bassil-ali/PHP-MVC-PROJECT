@@ -2,6 +2,9 @@
 
 namespace secheater\Http;
 
+use secheater\view\view;
+
+
 class Route
 {
 
@@ -29,6 +32,40 @@ class Route
     self::$routes['post'][$route] = $action;
 
    }
+
+   public function resolve(){
+
+    $path = $this->request->Path();
+
+    $method  = $this->request->method();
+    
+    $action  = self::$routes[$method][$path] ?? false;
+
+
+       if(!array_key_exists($path, self::$routes[$method])){
+
+        view::makeError('404');
+     }
+   
+       if(is_callable($action)){
+
+        call_user_func_array($action,[]);
+
+       }
+
+
+       if(is_array($action)){
+
+        call_user_func_array([new $action[0],$action[1]],[]);
+
+       }
+
+   }
+
+
+  
+
+
 
 
 
