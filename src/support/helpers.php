@@ -21,10 +21,27 @@ if(!function_exists('app')){
 
         if(!$instance){
 
-             $instance = new Application;
+          $instance = new Application;
         }
 
         return $instance;
+
+
+    }
+}
+
+if (!function_exists('config')) {
+    function config($key = null, $default = null)
+    {
+        if (is_null($key)) {
+            return app()->config;
+        }
+
+        if (is_array($key)) {
+            return app()->config->set($key);
+        }
+
+        return app()->config->get($key, $default);
     }
 }
 
@@ -33,6 +50,14 @@ if(!function_exists('value')){
     function value($value){
 
         return ($value instanceof closure) ? value() : $value;
+    }
+}
+
+if(!function_exists('config_path')){
+
+    function config_path(){
+
+        return base_path() . 'config/';
     }
 }
 
