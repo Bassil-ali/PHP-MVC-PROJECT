@@ -2,6 +2,7 @@
 
 use Dotenv\Dotenv;
 
+use App\Models\Post;
 use App\Models\User;
 use secheater\Validation\Validator;
 
@@ -38,4 +39,4 @@ $v->make([
 
 dump($v->errors());
 
-dump(User::all());
+dump(Post::all());
