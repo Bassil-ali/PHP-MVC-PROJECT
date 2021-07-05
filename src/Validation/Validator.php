@@ -35,6 +35,7 @@ class Validator
     {
 
         if (!$rule->apply($field, $this->getFieldValue($field), $this->data)) {
+
             $this->errorBag->add($field, Message::generate($rule, $this->alias($field)));
         }
     }

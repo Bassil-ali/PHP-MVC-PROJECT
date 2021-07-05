@@ -16,7 +16,7 @@ class Application
     protected Route $route;
     protected Request $request;
     protected Response $response;
-    protected DB $db;
+    // protected DB $db;
     protected Config $config;
     protected Session $session;
 

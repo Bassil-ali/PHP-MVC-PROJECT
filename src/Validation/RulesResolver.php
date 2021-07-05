@@ -14,7 +14,13 @@ trait RulesResolver
             }
 
             return $rule;
+
+
+
+
+            
         }, $rules);
+
     }
 
     public static function getRuleFromString(string $rule)

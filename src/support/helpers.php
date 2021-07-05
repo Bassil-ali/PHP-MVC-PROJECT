@@ -2,6 +2,7 @@
 
 use secheater\view\view;
 use secheater\Application;
+use secheater\support\Hash;
 
 
 
@@ -50,6 +51,24 @@ if(!function_exists('value')){
     function value($value){
 
         return ($value instanceof closure) ? value() : $value;
+    }
+}
+
+if(!function_exists('bcrypt')){
+
+    function bcrypt($password){
+
+        return Hash::passowrd($password);
+    }
+}
+
+if (!function_exists('class_basename')) {
+    function class_basename($class)
+    {
+        $class = is_object($class) ? get_class($class) : $class;
+
+
+        return basename(str_replace('\\', '/', $class));
     }
 }
 

@@ -2,6 +2,7 @@
 
 use Dotenv\Dotenv;
 
+use App\Models\User;
 use secheater\Validation\Validator;
 
 require_once __DIR__ . '/../src/support/helpers.php';
@@ -31,8 +32,10 @@ $v->make([
 
     'passowrd' => 'abcd',
 
-    'passowrd_confirmation' => 'abcde',
+    'passowrd_confirmation' => 'abcdd',
 
 ]);
 
 dump($v->errors());
+
+dump(User::all());
