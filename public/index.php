@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 use Dotenv\Dotenv;
 
 use App\Models\Post;
@@ -17,26 +18,45 @@ $env->load();
 
 app()->run();
 
-dump(config());
+// dump(config());
 
 
-$v = new Validator();
+// $v = new Validator();
 
-$v->setRules([
+// $v->setRules([
 
-    'passowrd' => 'required|confirmed',
+//     'passowrd' => 'required|confirmed',
 
-    'passowrd_confiramtion' => 'required'
-]);
+//     'passowrd_confiramtion' => 'required'
+// ]);
 
-$v->make([
+// $v->make([
 
-    'passowrd' => 'abcd',
+//     'passowrd' => 'abcd',
 
-    'passowrd_confirmation' => 'abcdd',
+//     'passowrd_confirmation' => 'abcd',
 
-]);
+// ]);
 
-dump($v->errors());
+// dump($v->errors());
 
-dump(Post::all());
+// dump(Post::all());
+
+// dump(app()->db->raw('SELECT * FROM users'));
+
+// dump(USER::create([
+//     'id'       => 2,
+//     'username' => 'ALi',
+//     'email'    => 'basel@gmial.com',
+//     'password' => bcrypt('123456') 
+// ]));
+
+// dump(USER::update(1, [
+
+//     'username' => 'Bassil'
+
+// ]));
+
+// dump(USER::delete(2));
+
+// dump(USER::where(['id','=','1']));

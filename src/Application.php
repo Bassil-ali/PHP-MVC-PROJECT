@@ -3,33 +3,44 @@
 namespace secheater;
 
 use secheater\Http\Route;
-// use secheater\Database\DB;
+use secheater\Database\DB;
 use secheater\Http\Request;
 use secheater\Http\Response;
 use secheater\support\Config;
-// use secheater\Support\Session;
-// use secheater\Database\Managers\MySQLManager;
-// use secheater\Database\Managers\SQLiteManager;
+use secheater\support\Session;
+use secheater\Database\Managers\MySQLManager;
 
 class Application
 {
     protected Route $route;
     protected Request $request;
     protected Response $response;
-    // protected DB $db;
+     protected DB $db;
     protected Config $config;
     protected Session $session;
+
 
     public function __construct()
     {
         $this->request = new Request;
         $this->response = new Response;
         $this->route = new Route($this->request, $this->response);
-        // $this->db = new DB($this->getDatabaseDriver());
+        $this->db = new DB($this->getDatabaseDriver());
         $this->config = new Config($this->loadConfigurations());
-        // $this->session = new Session;
+        $this->session = new Session;
+
     }
 
+    protected function getDatabaseDriver()
+    {
+
+        return match (env('DB_DRIVER')) {
+
+            'mysql' => new MySQLManager,
+            default => new MySQLManager
+
+        };
+    }
 
     protected function loadConfigurations()
     {
@@ -47,6 +58,8 @@ class Application
 
     public function run(){
 
+        $this->db->init();
+        
         $this->route->resolve();
     }
 

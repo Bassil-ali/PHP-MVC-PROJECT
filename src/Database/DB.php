@@ -2,7 +2,7 @@
 namespace secheater\Database;
 
 use secheater\Database\Concerns\ConnectsTo;
-use SecTheater\Database\Managers\Contracts\DatabaseManager;
+use secheater\Database\Managers\Contracts\DatabaseManager;
 
 
 
@@ -17,6 +17,7 @@ class DB
 
     public function init()
     {
+
         ConnectsTo::connect($this->manager);
     }
 

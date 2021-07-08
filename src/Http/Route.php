@@ -44,6 +44,8 @@ class Route
 
        if(!array_key_exists($path, self::$routes[$method])){
 
+        $this->response->setStatusCode(404);
+
         view::makeError('404');
      }
    

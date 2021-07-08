@@ -4,6 +4,7 @@ namespace secheater\Validation;
 
 use secheater\Validation\Rules\Contract\Rule;
 
+
 class Validator
 {
     protected array $data = [];

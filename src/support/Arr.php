@@ -2,6 +2,8 @@
 
 namespace secheater\support;
 
+use ArrayAccess;
+
 class Arr
 {
 
@@ -20,7 +22,7 @@ class Arr
 
         if($array instanceof ArrayAccess){
 
-            return $array->offestExist($key);
+            return $array->offsetExists($key);
         }
 
         return array_key_exists($key,$array);
